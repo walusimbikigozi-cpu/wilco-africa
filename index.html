@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wilco Africa Group Ltd — Industrial Protection Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #0A2540;
+  --navy-deep: #061828;
+  --navy-mid: #0E3258;
+  --orange: #FF6B35;
+  --orange-dark: #E5521C;
+  --white: #FFFFFF;
+  --grey: #8A9BB0;
+  --light: #F0F4F8;
+  --card-bg: #0D2E4A;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--navy-deep);color:var(--white);overflow-x:hidden}
+
+/* UTILITY */
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.orange{color:var(--orange)}
+.tag{display:inline-block;background:var(--orange);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;margin-bottom:16px}
+.btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:all .25s;cursor:pointer;border:none}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1;text-transform:uppercase}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 0;background:rgba(6,24,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,107,53,.15)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:1px;color:#fff;text-decoration:none}
+.logo span{color:var(--orange)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.nav-tel{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;color:var(--orange);letter-spacing:1px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+@media(max-width:768px){
+  .nav-links,.nav-tel{display:none}
+  .hamburger{display:flex}
+}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#061828 0%,#0A2540 50%,#0E3258 100%);z-index:0}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,53,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,53,.06) 1px,transparent 1px);background-size:60px 60px;z-index:1}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,53,.12) 0%,transparent 70%);z-index:1;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-badge{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.hero-badge-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero-badge-text{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--grey)}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,7vw,86px);font-weight:900;line-height:.95;text-transform:uppercase;margin-bottom:24px}
+h1 .line2{color:var(--orange)}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);max-width:620px;line-height:1.7;margin-bottom:36px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:32px;border-top:1px solid rgba(255,255,255,.1);padding-top:32px}
+.stat-item{}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--orange);line-height:1}
+.stat-label{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--grey);margin-top:4px}
+.hero-img-col{position:absolute;right:0;bottom:0;width:45%;height:80%;background:linear-gradient(to left,rgba(6,24,40,0),rgba(6,24,40,1));z-index:2;pointer-events:none}
+.hero-placeholder{position:absolute;right:0;bottom:0;width:40%;height:75%;z-index:1;opacity:.3}
+.hero-placeholder svg{width:100%;height:100%}
+
+/* TRUST BAR */
+#trust{background:var(--orange);padding:16px 0}
+.trust-inner{display:flex;align-items:center;gap:0;overflow:hidden}
+.trust-scroll{display:flex;gap:40px;animation:marquee 25s linear infinite;white-space:nowrap}
+.trust-item{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:12px}
+.trust-dot{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SERVICES */
+#services{padding:100px 0;background:var(--navy-deep)}
+.services-header{margin-bottom:60px}
+.divisions{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.15)}
+.division{background:var(--card-bg);padding:40px 32px;position:relative;overflow:hidden;transition:background .3s}
+.division::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.division:hover{background:#112f4e}
+.division:hover::before{transform:scaleX(1)}
+.div-num{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:rgba(255,107,53,.08);position:absolute;top:12px;right:20px;line-height:1}
+.div-icon{width:48px;height:48px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.div-icon svg{width:24px;height:24px;stroke:var(--orange);fill:none;stroke-width:1.5}
+.div-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;margin-bottom:8px;line-height:1.1}
+.div-sub{font-size:13px;color:var(--grey);margin-bottom:20px;line-height:1.6}
+.div-list{list-style:none}
+.div-list li{font-size:13px;color:rgba(255,255,255,.7);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:10px;line-height:1.4}
+.div-list li::before{content:'▸';color:var(--orange);flex-shrink:0;margin-top:1px}
+.div-cta{margin-top:24px;display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);text-decoration:none;border-bottom:1px solid rgba(255,107,53,.3);padding-bottom:2px;transition:border-color .2s}
+.div-cta:hover{border-color:var(--orange)}
+
+/* WHY WILCO */
+#why{padding:100px 0;background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why-visual{position:relative}
+.why-box{background:var(--card-bg);border:1px solid rgba(255,107,53,.15);padding:32px;position:relative}
+.why-box-inner{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,107,53,.1)}
+.why-metric{background:var(--card-bg);padding:24px;text-align:center}
+.why-metric-val{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:var(--orange);line-height:1}
+.why-metric-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);margin-top:6px}
+.why-active{background:var(--orange);padding:16px 20px;margin-top:2px;display:flex;align-items:center;gap:14px}
+.why-active-dot{width:10px;height:10px;background:#fff;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.why-active-text{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff}
+.why-points{margin-top:36px;display:flex;flex-direction:column;gap:24px}
+.why-point{display:flex;gap:18px;align-items:flex-start}
+.why-point-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:rgba(255,107,53,.25);line-height:1;flex-shrink:0;width:40px}
+.why-point-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;margin-bottom:4px}
+.why-point-text{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+
+/* LOCATIONS */
+#locations{padding:100px 0;background:var(--navy)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.city-list{display:flex;flex-direction:column;gap:0}
+.city-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);transition:all .2s;cursor:default}
+.city-item:hover .city-name{color:var(--orange)}
+.city-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,107,53,.3);flex-shrink:0;transition:background .2s}
+.city-item:hover .city-dot{background:var(--orange)}
+.city-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;transition:color .2s}
+.city-country{font-size:12px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-left:auto}
+.partners-block{margin-top:48px}
+.partner-cards{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.partner-card{background:var(--card-bg);border:1px solid rgba(255,255,255,.08);padding:18px 22px;display:flex;align-items:center;gap:16px}
+.partner-icon{width:40px;height:40px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.partner-icon svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:1.5}
+.partner-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase}
+.partner-type{font-size:12px;color:var(--grey);margin-top:2px}
+@media(max-width:768px){.loc-grid{grid-template-columns:1fr}}
+
+/* PROCESS */
+#process{padding:100px 0;background:var(--navy-deep)}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:60px;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:1px;background:rgba(255,107,53,.2);z-index:0}
+.step{background:transparent;padding:0 24px 0 0;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border:2px solid var(--orange);background:var(--navy-deep);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--orange);margin-bottom:24px}
+.step-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
+.step-text{font-size:13px;color:var(--grey);line-height:1.6}
+
+/* FEATURED PROJECT */
+#project{padding:100px 0;background:var(--navy)}
+.project-card{background:var(--card-bg);border:1px solid rgba(255,107,53,.2);overflow:hidden}
+.project-top{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.project-img{background:linear-gradient(135deg,#0E3258,#061828);min-height:320px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.project-img-placeholder{text-align:center;opacity:.4}
+.project-img-placeholder svg{width:80px;height:80px;stroke:var(--orange);fill:none;stroke-width:1}
+.project-img-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:12px}
+.project-details{padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
+.project-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.3);padding:6px 14px;margin-bottom:20px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange)}
+.project-status-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+.project-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:16px}
+.project-desc{font-size:14px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:24px}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px}
+.project-tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:5px 12px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--grey)}
+@media(max-width:768px){.project-top{grid-template-columns:1fr}.project-details{padding:32px 24px}}
+
+/* ABOUT */
+#about{padding:100px 0;background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-year{font-family:'Barlow Condensed',sans-serif;font-size:100px;font-weight:900;color:rgba(255,107,53,.07);line-height:1;margin-bottom:-20px}
+.about-text{font-size:15px;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:20px}
+.about-milestones{display:flex;flex-direction:column;gap:0}
+.milestone{display:flex;gap:20px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.milestone-year{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--orange);width:50px;flex-shrink:0}
+.milestone-text{font-size:13px;color:rgba(255,255,255,.65);line-height:1.5}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+#contact{padding:100px 0;background:var(--navy-deep)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-intro{font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:32px}
+.contact-items{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-icon{width:44px;height:44px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:1.5}
+.contact-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+.contact-val{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700}
+.contact-val a{color:#fff;text-decoration:none}
+.contact-val a:hover{color:var(--orange)}
+.audit-box{background:var(--orange);padding:40px;position:relative;overflow:hidden}
+.audit-box::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border:2px solid rgba(255,255,255,.15);border-radius:50%}
+.audit-box::after{content:'';position:absolute;bottom:-20px;left:-20px;width:100px;height:100px;border:2px solid rgba(255,255,255,.1);border-radius:50%}
+.audit-price{font-family:'Barlow Condensed',sans-serif;font-size:56px;font-weight:900;line-height:1;position:relative;z-index:1}
+.audit-price sub{font-size:22px}
+.audit-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;margin:8px 0 12px;position:relative;z-index:1}
+.audit-desc{font-size:14px;opacity:.85;line-height:1.6;margin-bottom:24px;position:relative;z-index:1}
+.btn-white{background:#fff;color:var(--orange);position:relative;z-index:1}
+.btn-white:hover{background:var(--navy);color:#fff}
+@media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:#04111F;padding:40px 0;border-top:1px solid rgba(255,107,53,.15)}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:1px}
+.footer-logo span{color:var(--orange)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--orange)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+
+/* WHATSAPP STICKY */
+.wa-btn{position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s,box-shadow .3s;animation:wa-pop 1s ease .5s both}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55)}
+.wa-btn svg{width:30px;height:30px;fill:#fff}
+@keyframes wa-pop{0%{transform:scale(0);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.wa-pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #25D366;animation:wa-pulse 2s ease-out infinite}
+@keyframes wa-pulse{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+
+/* MOBILE */
+@media(max-width:768px){
+  .process-steps::before{display:none}
+  .process-steps{grid-template-columns:1fr;gap:32px}
+  .step{padding:0}
+  #hero{padding:100px 0 60px}
+  .hero-img-col,.hero-placeholder{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo">WILCO<span>.</span>AFRICA</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#project">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="nav-tel">0208 055 795</span>
+      <a href="https://wa.me/2547XXXXXXX" class="btn btn-primary" style="padding:10px 20px;font-size:13px">WhatsApp Us</a>
+    </div>
+    <button class="hamburger" onclick="this.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">Active — Mzee Mike Fertilizer Plant, Ngong</span>
+    </div>
+    <h1>East Africa's Industrial<br><span class="line2">Protection Infrastructure</span><br>Since 2010</h1>
+    <p class="hero-sub">K9 units. Electric fences. Automatic gates. Fire alarms. CCTV. CIT. DRC logistics. Corrosion control. Wilco secures the entire industrial asset lifecycle from Malaba to Malindi.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/2547XXXXXXX" class="btn btn-primary">Get Industrial Site Audit — KES 5,000</a>
+      <a href="https://wa.me/2547XXXXXXX" class="btn btn-outline">WhatsApp Us Direct</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">13+</div><div class="stat-label">Years Operating</div></div>
+      <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Countries Active</div></div>
+      <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Rapid Response</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-scroll">
+        <span class="trust-item"><span class="trust-dot"></span>13+ Years</span>
+        <span class="trust-item"><span class="trust-dot"></span>7 Cities</span>
+        <span class="trust-item"><span class="trust-dot"></span>K9 Units</span>
+        <span class="trust-item"><span class="trust-dot"></span>Electric Fencing</span>
+        <span class="trust-item"><span class="trust-dot"></span>Hi-Speed Gates</span>
+        <span class="trust-item"><span class="trust-dot"></span>Fire Alarms</span>
+        <span class="trust-item"><span class="trust-dot"></span>CIT Services</span>
+        <span class="trust-item"><span class="trust-dot"></span>DRC Logistics</span>
+        <span class="trust-item"><span class="trust-dot"></span>Currently Active: Ngong Fertilizer Plant</span>
+        <span class="trust-item"><span class="trust-dot"></span>13+ Years</span>
+        <span class="trust-item"><span class="trust-dot"></span>7 Cities</span>
+        <span class="trust-item"><span class="trust-dot"></span>K9 Units</span>
+        <span class="trust-item"><span class="trust-dot"></span>Electric Fencing</span>
+        <span class="trust-item"><span class="trust-dot"></span>Hi-Speed Gates</span>
+        <span class="trust-item"><span class="trust-dot"></span>Fire Alarms</span>
+        <span class="trust-item"><span class="trust-dot"></span>CIT Services</span>
+        <span class="trust-item"><span class="trust-dot"></span>DRC Logistics</span>
+        <span class="trust-item"><span class="trust-dot"></span>Currently Active: Ngong Fertilizer Plant</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="tag">4 Divisions</span>
+      <h2 class="section-title">What We<br><span class="orange">Secure & Manage</span></h2>
+    </div>
+    <div class="divisions">
+
+      <!-- Security -->
+      <div class="division">
+        <div class="div-num">01</div>
+        <div class="div-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="div-title">Security Services</div>
+        <div class="div-sub">Integrated Perimeter & Emergency Security. We harden your perimeter. We detect threats. We respond fast.</div>
+        <ul class="div-list">
+          <li>Manned Guarding + K9 Units — Rottweilers, Dobermans, GSDs</li>
+          <li>CCTV + IT Systems — 24/7 monitoring, secure visit logs</li>
+          <li>Electric Fencing + Hi-Speed Automatic Gates</li>
+          <li>Fire & Panic Alarm Systems — 150m range, 30W sirens</li>
+          <li>Cash & Asset Escort (CIT)</li>
+          <li>Rapid Response — Nairobi Metro, Kajiado, Kampala, Malaba</li>
+          <li>Event + Emergency Planning with GIS site mapping</li>
+        </ul>
+        <a href="https://wa.me/2547XXXXXXX?text=SECURE" class="div-cta">WhatsApp 'SECURE' for Threat Audit →</a>
+      </div>
+
+      <!-- Asset Mgmt -->
+      <div class="division">
+        <div class="div-num">02</div>
+        <div class="div-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="div-title">Asset Management</div>
+        <div class="div-sub">Stop intruders. Stop fire. Stop rust. A coating stops corrosion — the enemy that works 24/7.</div>
+        <ul class="div-list">
+          <li>Industrial Coating — Crown Corro-Coat for tanks, structures, pipelines</li>
+          <li>Preventive Audits — 24/7 site reports, catch rust + fire risks early</li>
+          <li>Facility Protection — Flooring, drainage, structural upgrades</li>
+          <li>Active: Mzee Mike Fertilizer Plant, Ngong</li>
+        </ul>
+        <a href="https://wa.me/2547XXXXXXX?text=AUDIT" class="div-cta">Book KES 5,000 Site Audit — Deducted from project →</a>
+      </div>
+
+      <!-- Logistics -->
+      <div class="division">
+        <div class="div-num">03</div>
+        <div class="div-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        </div>
+        <div class="div-title">Logistics Solutions</div>
+        <div class="div-sub">Cross-Border Industrial Logistics, Secured. We move it. We clear it. We protect it.</div>
+        <ul class="div-list">
+          <li>Freight + Warehousing — Secure material handling for plants</li>
+          <li>Border Clearance — Malaba, DRC, Kampala border points</li>
+          <li>Route Intelligence — Aerial mapping of East/Central Africa corridors</li>
+          <li>Regulatory Compliance — Enforce standards on ground</li>
+        </ul>
+        <a href="https://wa.me/2547XXXXXXX?text=LOGISTICS" class="div-cta">Request Logistics Quote →</a>
+      </div>
+
+      <!-- Trade -->
+      <div class="division">
+        <div class="div-num">04</div>
+        <div class="div-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </div>
+        <div class="div-title">Trade Consulting</div>
+        <div class="div-sub">Enter Markets. Exit Risk. KEBS/KEPHIS compliance, export documentation, East African market entry.</div>
+        <ul class="div-list">
+          <li>KEBS / KEPHIS Certification Support</li>
+          <li>Export Documentation — legal clearance, standards compliance</li>
+          <li>East African market entry advisory</li>
+          <li>DRC border point liaison and documentation</li>
+        </ul>
+        <a href="https://wa.me/2547XXXXXXX?text=TRADE" class="div-cta">Enquire About Trade Consulting →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY WILCO -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text">
+        <span class="tag">Why Wilco</span>
+        <h2 class="section-title">Not Just<br><span class="orange">Security —</span><br>Full Asset<br>Lifecycle Cover</h2>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-num">01</div>
+            <div>
+              <div class="why-point-title">Integrated, Not Piecemeal</div>
+              <div class="why-point-text">One contract covers guards, K9, CCTV, alarms, fencing, gates, and corrosion control. No gap between vendors.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">02</div>
+            <div>
+              <div class="why-point-title">Muay Thai-Trained Guards</div>
+              <div class="why-point-text">Tactically trained operatives — not just watchmen. Our personnel are discipline-certified and response-ready.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">03</div>
+            <div>
+              <div class="why-point-title">Cross-Border Intelligence</div>
+              <div class="why-point-text">Aerial route mapping, DRC/Malaba border documentation, and socio-economic corridor risk assessment.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">04</div>
+            <div>
+              <div class="why-point-title">Industrial-Grade from Day One</div>
+              <div class="why-point-text">From Opel Auto to fertilizer plants — built for the demands of heavy industry, not just residential estates.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-box">
+          <div class="why-box-inner">
+            <div class="why-metric"><div class="why-metric-val">K9</div><div class="why-metric-label">Certified Units</div></div>
+            <div class="why-metric"><div class="why-metric-val">150m</div><div class="why-metric-label">Alarm Range</div></div>
+            <div class="why-metric"><div class="why-metric-val">4</div><div class="why-metric-label">Countries</div></div>
+            <div class="why-metric"><div class="why-metric-val">24/7</div><div class="why-metric-label">Monitoring</div></div>
+          </div>
+          <div class="why-active">
+            <div class="why-active-dot"></div>
+            <div class="why-active-text">Live deployment — Mzee Mike Fertilizer Plant, Ngong, Kenya</div>
+          </div>
+        </div>
+        <div style="background:var(--card-bg);border:1px solid rgba(255,107,53,.15);padding:28px;margin-top:2px">
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:14px">Hotline</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--orange)">0208 055 795</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:4px">Armed rapid response — Nairobi Metro, Kajiado, Kampala</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS + PARTNERS -->
+<section id="locations">
+  <div class="container">
+    <div style="margin-bottom:60px">
+      <span class="tag">Coverage</span>
+      <h2 class="section-title">7 Cities.<br><span class="orange">4 Countries.</span></h2>
+    </div>
+    <div class="loc-grid">
+      <div>
+        <div class="city-list">
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Nairobi</div><div class="city-country">Kenya — HQ</div></div>
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Malindi</div><div class="city-country">Kenya</div></div>
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Vihiga</div><div class="city-country">Kenya</div></div>
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Kampala</div><div class="city-country">Uganda</div></div>
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Entebbe</div><div class="city-country">Uganda</div></div>
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Makerere</div><div class="city-country">Uganda</div></div>
+          <div class="city-item"><div class="city-dot"></div><div class="city-name">Bunia</div><div class="city-country">DR Congo</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="partners-block">
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:20px">Trusted Partners</div>
+          <div class="partner-cards">
+            <div class="partner-card">
+              <div class="partner-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <div><div class="partner-name">Opel Auto</div><div class="partner-type">Automotive — Security & Premises Protection</div></div>
+            </div>
+            <div class="partner-card">
+              <div class="partner-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+              <div><div class="partner-name">ATES Uganda</div><div class="partner-type">Industrial — Asset & Logistics Solutions</div></div>
+            </div>
+            <div class="partner-card">
+              <div class="partner-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+              <div><div class="partner-name">Macmedia Africa Ltd</div><div class="partner-type">Media & Communications — Site Security</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <span class="tag">How It Works</span>
+    <h2 class="section-title">From Enquiry<br><span class="orange">to Deployment</span></h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Site Audit</div>
+        <div class="step-text">KES 5,000 on-site assessment. We map every perimeter gap, fire risk, and corrosion point. Fee deducted from contract.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Risk Report</div>
+        <div class="step-text">GIS-mapped threat report delivered within 48hrs. You see exactly what's vulnerable and why.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Integrated Proposal</div>
+        <div class="step-text">One proposal, one contract — covering all security, asset management, and logistics requirements.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Rapid Deployment</div>
+        <div class="step-text">Guards, K9, CCTV, fencing, alarms installed and operational. 24/7 monitoring begins immediately.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-title">Ongoing Management</div>
+        <div class="step-text">Monthly site reports, preventive audits, rapid response on standby. Your industrial assets stay protected continuously.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section id="project">
+  <div class="container">
+    <span class="tag">Featured Project</span>
+    <h2 class="section-title" style="margin-bottom:40px">Active Deployment</h2>
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-img">
+          <!-- Placeholder: industrial plant / Ngong context -->
+          <div class="project-img-placeholder">
+            <svg viewBox="0 0 80 80"><rect x="10" y="40" width="12" height="30"/><rect x="28" y="25" width="12" height="45"/><rect x="46" y="30" width="12" height="40"/><rect x="5" y="70" width="70" height="3"/><path d="M22 20 L22 10 L30 15 L38 10 L38 25"/><circle cx="22" cy="8" r="3" stroke-dasharray="2 2"/></svg>
+            <div class="project-img-label">Industrial Plant — Ngong, Kenya</div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-status"><span class="project-status-dot"></span>Currently Active</div>
+          <div class="project-title">Mzee Mike Fertilizer Plant<br>— Ngong</div>
+          <div class="project-desc">Wilco's flagship integrated deployment: manned guarding with K9 units, full perimeter electric fencing, CCTV installation, fire alarm systems, and Crown Corro-Coat industrial coating for structural and tank protection. A complete industrial asset lifecycle package under one contract.</div>
+          <div class="project-tags">
+            <span class="project-tag">K9 Units</span>
+            <span class="project-tag">Electric Fencing</span>
+            <span class="project-tag">CCTV</span>
+            <span class="project-tag">Fire Alarms</span>
+            <span class="project-tag">Corro-Coat</span>
+            <span class="project-tag">Manned Guarding</span>
+          </div>
+          <div style="margin-top:24px">
+            <a href="https://wa.me/2547XXXXXXX?text=PROJECT" class="btn btn-primary">Get a Similar Package</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="tag">About</span>
+        <div class="about-year">2010</div>
+        <h2 class="section-title" style="margin-bottom:24px">Built for Africa's<br><span class="orange">Industrial Reality</span></h2>
+        <p class="about-text">Wilco Africa Group Ltd is a limited liability company registered in Kenya. Since 2010, we have operated across East and Central Africa — building the infrastructure that keeps industrial assets safe, operational, and compliant.</p>
+        <p class="about-text">We are pioneers in integrated industrial protection: the only firm in the region combining Muay Thai-trained manned guarding, certified K9 units, perimeter hardening, fire systems, cross-border logistics, and industrial corrosion control under one operational command.</p>
+        <p class="about-text">In 2026, Wilco expanded into industrial asset management for Africa's factories and plants — extending our mandate from protection to the full asset lifecycle.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:20px">Company Timeline</div>
+        <div class="about-milestones">
+          <div class="milestone"><div class="milestone-year">2010</div><div class="milestone-text">Founded in Kenya. Operations begin across Nairobi and Malindi with manned guarding and K9 services.</div></div>
+          <div class="milestone"><div class="milestone-year">2013</div><div class="milestone-text">Expansion into Uganda — Kampala, Entebbe, Makerere. Cross-border logistics mandate established.</div></div>
+          <div class="milestone"><div class="milestone-year">2016</div><div class="milestone-text">DRC border documentation operations at Malaba. Aerial transport route mapping across East/Central Africa.</div></div>
+          <div class="milestone"><div class="milestone-year">2019</div><div class="milestone-text">Partnerships with Opel Auto, ATES Uganda, Macmedia Africa Ltd. Bunia operations active.</div></div>
+          <div class="milestone"><div class="milestone-year">2023</div><div class="milestone-text">Electric fencing, Hi-Speed gates, and full fire alarm systems added to service portfolio.</div></div>
+          <div class="milestone"><div class="milestone-year">2026</div><div class="milestone-text">Industrial asset management division launched. First deployment: Mzee Mike Fertilizer Plant, Ngong.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div style="margin-bottom:60px">
+      <span class="tag">Contact</span>
+      <h2 class="section-title">Start With a<br><span class="orange">Site Audit</span></h2>
+    </div>
+    <div class="contact-wrap">
+      <div>
+        <p class="contact-intro">Every engagement begins with a KES 5,000 on-site audit. We assess your full perimeter, fire risk, and corrosion exposure — then deliver a complete integrated protection proposal. The audit fee is deducted from your project contract.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 11.8 19.79 19.79 0 011.65 3.17 2 2 0 013.62 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.6a16 16 0 006.29 6.29l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="contact-label">Hotline</div><div class="contact-val"><a href="tel:0208055795">0208 055 795</a></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div><div class="contact-label">WhatsApp</div><div class="contact-val"><a href="https://wa.me/2547XXXXXXX">+254 7XX XXX XXX</a></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="contact-label">Headquarters</div><div class="contact-val">Nairobi, Kenya</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="audit-box">
+        <div class="audit-price"><sub>KES </sub>5,000</div>
+        <div class="audit-title">Industrial Site Audit</div>
+        <div class="audit-desc">Full perimeter, fire, and corrosion assessment by our senior operations team. Includes a detailed risk report and integrated protection proposal. Fee is 100% deductible from your project contract.</div>
+        <a href="https://wa.me/2547XXXXXXX?text=AUDIT" class="btn btn-white">Book Your Audit on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">WILCO<span>.</span>AFRICA GROUP LTD</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#locations">Locations</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Wilco Africa Group Ltd. Registered in Kenya.</div>
+  </div>
+</footer>
+
+<!-- WHATSAPP STICKY -->
+<a href="https://wa.me/2547XXXXXXX" class="wa-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>

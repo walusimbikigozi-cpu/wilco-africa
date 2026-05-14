@@ -1,1 +1,20 @@
 
+backend:
+  name: github
+  repo: walusimbikigozi-cpu/wilco-africa
+  branch: main
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+    - name: "products"
+    label: "Products"
+    folder: "data/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+            - {label: "Title", name: "title", widget: "string"}
+            - {label: "Description", name: "description", widget: "markdown"}
+            - {label: "Image", name: "image", widget: "image"}
+            - {label: "Price", name: "price", widget: "number"}
